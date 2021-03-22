@@ -1,24 +1,35 @@
 package com.example.movieapp
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 
 class MovieTitlesFragment : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_movie_titles, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_movie_titles, container, false)
+        val activity = activity as Context
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
+        recyclerView.layoutManager = GridLayoutManager(activity, 2)
+        recyclerView.adapter = DogListAdapter(activity)
+        return view
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if(context != null){
+            //Update the fragment with information from the context
+        }
     }
 
 }
