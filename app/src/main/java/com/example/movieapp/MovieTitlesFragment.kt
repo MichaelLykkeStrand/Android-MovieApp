@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.movieapp.movie.adapter.MovieListAdapter
 
 
 class MovieTitlesFragment : Fragment() {
@@ -19,9 +20,9 @@ class MovieTitlesFragment : Fragment() {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_movie_titles, container, false)
         val activity = activity as Context
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.movie_titles_recycler_view)
         recyclerView.layoutManager = GridLayoutManager(activity, 2)
-        recyclerView.adapter = DogListAdapter(activity)
+        recyclerView.adapter = MovieListAdapter(activity)
         return view
     }
 
