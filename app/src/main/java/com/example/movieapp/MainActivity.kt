@@ -19,8 +19,8 @@ class MainActivity : AppCompatActivity() {
             //TODO change this to list view
             supportFragmentManager
                 .beginTransaction()
-                .add(R.id.root_layout, MovieDetailsFragment.newInstance(), "movieDetails")
-                .commit()
+                    .replace(R.id.fragment_placeholder, MovieTitlesFragment.newInstance())
+                    .commit()
         }
 
         val apiService : ITheMovieDB = TheMovieDBClient.getClient()
@@ -32,6 +32,8 @@ class MainActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<MovieDetails>?, response: Response<MovieDetails>?) {
                 Log.d("retrofit", "call success")
+                val movieDetails = response?.body();
+                Log.d("retrofit","movieTitles");
             }
 
         })
