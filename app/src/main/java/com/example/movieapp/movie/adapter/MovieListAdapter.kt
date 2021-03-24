@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.movie.Movie
 import com.example.movieapp.R
 
-class MovieListAdapter(private val dataSet: Array<Movie>) :
+class MovieListAdapter(private val dataSet: MutableList<Movie>) :
         RecyclerView.Adapter<MovieListAdapter.MovieViewHolder>() {
 
     //ViewHolder
@@ -22,9 +22,7 @@ class MovieListAdapter(private val dataSet: Array<Movie>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.movie_view_holder, parent, false)
-
         return MovieViewHolder(view)
-
     }
 
     override fun getItemCount() = dataSet.size //Shorthand returning the value of dataSet.size

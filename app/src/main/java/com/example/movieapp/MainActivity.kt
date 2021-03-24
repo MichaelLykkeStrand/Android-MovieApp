@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
             //TODO change this to list view
             supportFragmentManager
                 .beginTransaction()
-                .add(R.id.root_layout, MovieDetailsFragment.newInstance(), "movieDetails")
+                .add(R.id.root_layout, MovieTitlesFragment.newInstance(), "movieTitles")
                 .commit()
         }
 
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<MovieDetails>?, response: Response<MovieDetails>?) {
                 Log.d("retrofit", "call success")
                 val movieDetails = response?.body();
-                Log.d("retrofit","movieDetails");
+                Log.d("retrofit","movieTitles");
             }
 
         })
