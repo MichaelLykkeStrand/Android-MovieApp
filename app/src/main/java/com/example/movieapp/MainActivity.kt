@@ -19,8 +19,8 @@ class MainActivity : AppCompatActivity() {
             //TODO change this to list view
             supportFragmentManager
                 .beginTransaction()
-                .add(R.id.root_layout, MovieTitlesFragment.newInstance(), "movieTitles")
-                .commit()
+                    .replace(R.id.fragment_placeholder, MovieTitlesFragment.newInstance(), "movieTitles")
+                    .commit()
         }
 
         val apiService : ITheMovieDB = TheMovieDBClient.getClient()

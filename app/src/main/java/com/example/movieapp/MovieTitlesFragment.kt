@@ -2,6 +2,7 @@ package com.example.movieapp
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,9 +11,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.movie.Movie
 import com.example.movieapp.movie.adapter.MovieListAdapter
+import com.example.movieapp.movie.adapter.OnMovieClickListener
 
 
-class MovieTitlesFragment : Fragment() {
+class MovieTitlesFragment : Fragment(), OnMovieClickListener {
 
     companion object {
         fun newInstance(): MovieTitlesFragment {
@@ -33,7 +35,7 @@ class MovieTitlesFragment : Fragment() {
         val activity = activity as Context
         val recyclerView = view.findViewById<RecyclerView>(R.id.movie_titles_recycler_view)
         recyclerView.layoutManager = GridLayoutManager(activity, 2)
-        recyclerView.adapter = MovieListAdapter(movieList)
+        recyclerView.adapter = MovieListAdapter(movieList,this)
         return view
     }
 
@@ -42,6 +44,10 @@ class MovieTitlesFragment : Fragment() {
         if(context != null){
             //Update the fragment with information from the context
         }
+    }
+
+    override fun onMovieClick(movie: Movie) {
+        Log.d("callback","movie is back")
     }
 
 }

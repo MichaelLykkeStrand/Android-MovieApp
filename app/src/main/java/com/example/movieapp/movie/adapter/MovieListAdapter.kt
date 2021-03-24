@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.movie.Movie
 import com.example.movieapp.R
 
-class MovieListAdapter(private val dataSet: MutableList<Movie>) :
+class MovieListAdapter(private val dataSet: MutableList<Movie>, callbackListener: OnMovieClickListener) :
         RecyclerView.Adapter<MovieListAdapter.MovieViewHolder>() {
+
+    val listener : OnMovieClickListener = callbackListener
 
     //ViewHolder
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -29,6 +31,10 @@ class MovieListAdapter(private val dataSet: MutableList<Movie>) :
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         holder.movieTextView.text = dataSet[position].title
+        holder.itemView.setOnClickListener {
+            listener.onMovieClick(dataSet[position])
+
+        }
     }
 
 }
