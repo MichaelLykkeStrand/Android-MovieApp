@@ -48,6 +48,10 @@ class MovieTitlesFragment : Fragment(), OnMovieClickListener {
 
     override fun onMovieClick(movie: Movie) {
         Log.d("callback","movie is back")
+        val fr = getFragmentManager()?.beginTransaction()
+        fr?.replace(R.id.fragment_placeholder, MovieDetailsFragment())
+        fr?.addToBackStack(null)
+        fr?.commit()
     }
 
 }

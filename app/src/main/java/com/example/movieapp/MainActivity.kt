@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
             //TODO change this to list view
             supportFragmentManager
                 .beginTransaction()
-                    .replace(R.id.fragment_placeholder, MovieTitlesFragment.newInstance(), "movieTitles")
+                    .replace(R.id.fragment_placeholder, MovieTitlesFragment.newInstance())
                     .commit()
         }
 
