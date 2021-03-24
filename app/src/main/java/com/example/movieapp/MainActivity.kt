@@ -32,6 +32,8 @@ class MainActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<MovieDetails>?, response: Response<MovieDetails>?) {
                 Log.d("retrofit", "call success")
+                val movieDetails = response?.body();
+                Log.d("retrofit","movieDetails");
             }
 
         })
