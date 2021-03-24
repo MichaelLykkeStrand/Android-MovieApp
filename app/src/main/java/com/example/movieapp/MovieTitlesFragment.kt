@@ -20,6 +20,8 @@ class MovieTitlesFragment : Fragment(), OnMovieClickListener {
         fun newInstance(): MovieTitlesFragment {
             return MovieTitlesFragment()
         }
+
+        const val BACKSTACKNAME = "movieDetails"
     }
 
     override fun onCreateView(
@@ -50,7 +52,7 @@ class MovieTitlesFragment : Fragment(), OnMovieClickListener {
         Log.d("callback","movie is back")
         val fr = getFragmentManager()?.beginTransaction()
         fr?.replace(R.id.fragment_placeholder, MovieDetailsFragment())
-        fr?.addToBackStack(null)
+        fr?.addToBackStack(BACKSTACKNAME)
         fr?.commit()
     }
 
