@@ -23,20 +23,7 @@ class MainActivity : AppCompatActivity() {
                     .commit()
         }
 
-        val apiService : ITheMovieDB = TheMovieDBClient.getClient()
-        val call = apiService.getMovieDetails(527774)
-        call.enqueue(object : Callback<MovieDetails> {
-            override fun onFailure(call: Call<MovieDetails>?, t: Throwable?) {
-                Log.d("retrofit", "call failed")
-            }
 
-            override fun onResponse(call: Call<MovieDetails>?, response: Response<MovieDetails>?) {
-                Log.d("retrofit", "call success")
-                val movieDetails = response?.body();
-                Log.d("retrofit","movieTitles");
-            }
-
-        })
 
     }
 }
