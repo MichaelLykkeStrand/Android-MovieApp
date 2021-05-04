@@ -50,6 +50,7 @@ class MovieTitlesFragment : Fragment(), OnMovieClickListener {
         apiService.getPopularMovie(1);
         val call = apiService.getPopularMovie(1)
 
+        //Async call
         call.enqueue(object : Callback<MovieResponse> {
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 Log.d("retrofit", "call failed");
@@ -81,7 +82,12 @@ class MovieTitlesFragment : Fragment(), OnMovieClickListener {
     override fun onMovieClick(movie: Movie) {
         Log.d("callback","movie is back")
         val fr = getFragmentManager()?.beginTransaction()
-        fr?.replace(R.id.fragment_placeholder, MovieDetailsFragment())
+        val bundle = Bundle()
+        //Parse movie id to MovieDetailsFragment
+        bundle.putInt("movieID", movie.id);
+        val movieDetailsFragment = MovieDetailsFragment()
+        movieDetailsFragment.arguments = bundle
+        fr?.replace(R.id.fragment_placeholder, movieDetailsFragment)
         fr?.addToBackStack(BACKSTACKNAME)
         fr?.commit()
     }
