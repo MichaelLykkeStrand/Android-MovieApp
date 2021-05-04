@@ -48,9 +48,7 @@ class MovieTitlesFragment : Fragment(), OnMovieClickListener {
 
 
         apiService.getPopularMovie(1);
-
         val call = apiService.getPopularMovie(1)
-
 
         call.enqueue(object : Callback<MovieResponse> {
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
@@ -60,19 +58,15 @@ class MovieTitlesFragment : Fragment(), OnMovieClickListener {
                 Log.d("retrofit", "call success");
                 val movieResponse = response?.body();
                 if (movieResponse != null) {
-                    Log.d("retrofit","Not null");
                     movieResponse.movieList.forEach{
                         movieList.add(it);
                         Log.d("retrofit",movieList.toString());
                     }
+                    //update view
                     (recyclerView.adapter as MovieListAdapter).notifyDataSetChanged();
-                } else{
-                    Log.d("retrofit","Null");
                 }
-                Log.d("retrofit","MovieResponse");
             }
         })
-
 
         return view
     }
