@@ -37,8 +37,14 @@ class MovieDetailsFragment : Fragment() {
                 Log.d("retrofit", "call success")
                 val movieDetails = response?.body();
                 if (movieDetails != null) {
-                    val nametextview = view.findViewById<TextView>(R.id.textView6)
-                    nametextview.setText(movieDetails.original_title);
+                    val nameTextView = view.findViewById<TextView>(R.id.textView6)
+                    val releaseTextView = view.findViewById<TextView>(R.id.textView7)
+                    val averageRatingTextView = view.findViewById<TextView>(R.id.textView8)
+                    val descriptionTextView = view.findViewById<TextView>(R.id.textView9)
+                    nameTextView.setText(movieDetails.original_title);
+                    releaseTextView.setText("Release date: "+movieDetails.release_date)
+                    averageRatingTextView.setText("Average rating: "+ movieDetails.vote_average)
+                    descriptionTextView.setText(movieDetails.overview)
                 }
 
             }
