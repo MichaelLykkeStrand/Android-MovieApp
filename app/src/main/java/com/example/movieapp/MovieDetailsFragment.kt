@@ -46,9 +46,7 @@ class MovieDetailsFragment : Fragment() {
                     averageRatingTextView.setText("Average rating: "+ movieDetails.vote_average)
                     descriptionTextView.setText(movieDetails.overview)
                 }
-
             }
-
         })
         Log.d("debug","called!")
         return view;
