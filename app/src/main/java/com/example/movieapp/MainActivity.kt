@@ -16,14 +16,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
-            //TODO change this to list view
             supportFragmentManager
                 .beginTransaction()
                     .replace(R.id.fragment_placeholder, MovieTitlesFragment.newInstance())
                     .commit()
         }
-
-
-
     }
 }
