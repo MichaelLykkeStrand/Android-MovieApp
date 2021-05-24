@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.example.movieapp.api.ITheMovieDB
 import com.example.movieapp.api.TheMovieDBClient
 import com.example.movieapp.movie.MovieDetails
@@ -21,6 +23,7 @@ import retrofit2.Response
 
 class MovieDetailsFragment : Fragment() {
 
+    val BASE_IMAGE_URL = "https://image.tmdb.org/t/p/original"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,6 +44,12 @@ class MovieDetailsFragment : Fragment() {
                     Log.d("retrofit", "call success")
                     val movieDetails = response?.body();
                     if (movieDetails != null) {
+
+                        val imageView = view.findViewById<ImageView>(R.id.imageView)
+                        Glide.with(imageView.context)
+                            .load(BASE_IMAGE_URL+movieDetails.poster_path)
+                            .into(imageView);
+
                         val nameTextView = view.findViewById<TextView>(R.id.textView6)
                         val releaseTextView = view.findViewById<TextView>(R.id.textView7)
                         val averageRatingTextView = view.findViewById<TextView>(R.id.textView8)
