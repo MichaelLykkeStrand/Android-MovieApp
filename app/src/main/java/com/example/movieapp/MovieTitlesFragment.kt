@@ -42,7 +42,7 @@ class MovieTitlesFragment : Fragment(), OnMovieClickListener {
         val view: View = inflater.inflate(R.layout.fragment_movie_titles, container, false)
         val activity = activity as Context
         val recyclerView = view.findViewById<RecyclerView>(R.id.movie_titles_recycler_view)
-        recyclerView.layoutManager = GridLayoutManager(activity, 2)
+        recyclerView.layoutManager = GridLayoutManager(activity, 1)
         val movieList = mutableListOf<Movie>()
         recyclerView.adapter = MovieListAdapter(movieList,this)
 

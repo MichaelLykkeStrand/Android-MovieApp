@@ -12,9 +12,9 @@
         android:id="@+id/movie_titles_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="LinearLayoutManager"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp"
-        tools:listitem="@layout/recycler_view_item" />
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

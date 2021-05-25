@@ -33,7 +33,6 @@ class MovieListAdapter(private val dataSet: MutableList<Movie>, callbackListener
         holder.movieTextView.text = dataSet[position].title
         holder.itemView.setOnClickListener {
             listener.onMovieClick(dataSet[position])
-
         }
     }
 
