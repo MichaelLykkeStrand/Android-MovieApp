@@ -29,9 +29,10 @@ class MovieDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_movie_details, container, false)
+        view.visibility = View.INVISIBLE
         //Update the fragment with information from the context
         // Inflate the layout for this fragment
-        GlobalScope.async(Dispatchers.IO){
+        GlobalScope.async(Dispatchers.IO){ //Not needed as retrofit does this behind the scenes
             val movieID = arguments?.getInt("movieID");
             val apiService : ITheMovieDB = TheMovieDBClient.getClient()
             val call = apiService.getMovieDetails(movieID)
@@ -58,6 +59,7 @@ class MovieDetailsFragment : Fragment() {
                         releaseTextView.setText("Release date: "+movieDetails.release_date)
                         averageRatingTextView.setText("Average rating: "+ movieDetails.vote_average)
                         descriptionTextView.setText(movieDetails.overview)
+                        view.visibility = View.VISIBLE
                     }
                 }
             })
